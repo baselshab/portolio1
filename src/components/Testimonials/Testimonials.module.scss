@@ -1,0 +1,293 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.testimonialsSection {
+  padding: 80px 0 100px;
+  border-top: 1px solid var(--line);
+  background: var(--bg);
+  overflow: hidden;
+
+  @include mobile {
+    padding: 50px 0 60px;
+  }
+}
+
+.header {
+  margin-bottom: 48px;
+
+  @include mobile {
+    margin-bottom: 28px;
+  }
+}
+
+.eyebrow {
+  font-family: $mono;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: var(--cobalt);
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+
+  .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--cobalt);
+  }
+}
+
+.titleRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 32px;
+
+  @include tablet {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+}
+
+.heading {
+  font-family: $serif;
+  font-weight: 500;
+  font-size: clamp(26px, 3.8vw, 44px);
+  line-height: 1.25;
+  color: var(--ink);
+  max-width: 22ch;
+
+  em {
+    font-style: italic;
+    color: var(--cobalt);
+  }
+}
+
+.subtitle {
+  font-family: $sans;
+  font-size: 14.5px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+  max-width: 44ch;
+}
+
+// Desktop 3-Column Grid
+.desktopGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+
+  @include tablet {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  @include mobile {
+    display: none;
+  }
+}
+
+.desktopCard {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    border-color: rgba(30, 58, 224, 0.25);
+    background: #ffffff;
+    box-shadow: 0 12px 32px -8px rgba(13, 13, 15, 0.06);
+  }
+}
+
+.stars {
+  color: #f59e0b;
+  font-size: 15px;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+
+.quote {
+  font-family: $serif;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--ink);
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+
+.authorRow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: auto;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
+.avatar {
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  min-height: 42px;
+  border-radius: 50%;
+  background: var(--cobalt-soft);
+  color: var(--cobalt);
+  font-family: $mono;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.authorName {
+  font-family: $serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.authorRole {
+  font-family: $mono;
+  font-size: 11px;
+  color: var(--ink-soft);
+  margin-top: 2px;
+
+  span {
+    color: var(--cobalt);
+  }
+}
+
+// Dedicated Mobile Swipeable Carousel
+.mobileCarouselWrap {
+  display: none;
+
+  @include mobile {
+    display: block;
+    margin-inline: -16px;
+  }
+}
+
+.mobileCarousel {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 6px 16px 20px;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.mobileCard {
+  flex: 0 0 clamp(260px, 82vw, 340px);
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 20px 18px;
+  box-shadow: 0 4px 16px rgba(13, 13, 15, 0.04);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease;
+
+  &:active {
+    transform: scale(0.985);
+  }
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.verifiedPill {
+  font-family: $mono;
+  font-size: 10px;
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.1);
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-weight: 500;
+}
+
+.mobileQuote {
+  font-family: $serif;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink);
+  margin-bottom: 18px;
+  flex-grow: 1;
+}
+
+.mobileAuthor {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  margin-top: auto;
+}
+
+.authorInfo {
+  .authorName {
+    font-size: 15px;
+  }
+
+  .authorRole {
+    font-size: 10.5px;
+  }
+}
+
+.mobileControls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  margin-top: 4px;
+}
+
+.dots {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.dotItem {
+  width: 8px;
+  height: 8px;
+  min-width: 8px;
+  min-height: 8px;
+  border-radius: 999px;
+  background: var(--line);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.25s ease;
+
+  &.activeDot {
+    width: 22px;
+    background: var(--cobalt);
+  }
+}
+
+.swipeHint {
+  font-family: $mono;
+  font-size: 10.5px;
+  color: var(--ink-soft);
+  opacity: 0.8;
+}

@@ -1,0 +1,175 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as *;
+
+.loginWrapper {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+
+  // Architectural background lines
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(
+        to right,
+        rgba(222, 220, 212, 0.4) 1px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, rgba(222, 220, 212, 0.4) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(circle at 50% 50%, black 20%, transparent 80%);
+    -webkit-mask-image: radial-gradient(
+      circle at 50% 50%,
+      black 20%,
+      transparent 80%
+    );
+    pointer-events: none;
+  }
+}
+
+.loginCard {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 440px;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: clamp(32px, 5vw, 48px);
+  box-shadow: 0 20px 60px -15px rgba(13, 13, 15, 0.08),
+    0 1px 3px rgba(13, 13, 15, 0.04);
+}
+
+.brandHeader {
+  text-align: center;
+  margin-bottom: 32px;
+
+  .backLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: $mono;
+    font-size: 11px;
+    color: var(--ink-soft);
+    margin-bottom: 20px;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: var(--cobalt);
+    }
+  }
+
+  .logo {
+    font-family: $serif;
+    font-style: italic;
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    background: var(--cobalt-soft);
+    color: var(--cobalt);
+    font-family: $mono;
+    font-size: 10.5px;
+    font-weight: 500;
+    border-radius: 999px;
+    margin-top: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  p {
+    margin-top: 10px;
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+}
+
+.formGroup {
+  margin-bottom: 20px;
+
+  label {
+    display: block;
+    font-family: $mono;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+  }
+
+  input {
+    width: 100%;
+    background: #fbfbf8;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-family: $sans;
+    font-size: 14px;
+    color: var(--ink);
+    outline: none;
+    transition: all 0.2s ease;
+
+    &:focus {
+      border-color: var(--cobalt);
+      background: #ffffff;
+      box-shadow: 0 0 0 3px rgba(30, 58, 224, 0.12);
+    }
+  }
+}
+
+.submitBtn {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px;
+  margin-top: 8px;
+  border-radius: 999px;
+  background: var(--cobalt);
+  color: #ffffff;
+  border: none;
+  font-family: $mono;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s ease;
+
+  &:hover:not(:disabled) {
+    background: #152bb5;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(30, 58, 224, 0.3);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.errorAlert {
+  padding: 12px 16px;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: 10px;
+  color: #dc2626;
+  font-family: $mono;
+  font-size: 12px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

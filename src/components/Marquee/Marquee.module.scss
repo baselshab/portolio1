@@ -1,0 +1,51 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+@keyframes marqueeAnimation {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.marquee {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 20px 0;
+  overflow: hidden;
+  white-space: nowrap;
+  background: var(--bg);
+  position: relative;
+  width: 100%;
+}
+
+.track {
+  display: inline-flex;
+  width: max-content;
+  will-change: transform;
+  animation: marqueeAnimation 24s linear infinite;
+
+  &:hover {
+    animation-play-state: paused;
+  }
+
+  span {
+    font-family: $serif;
+    font-style: italic;
+    font-size: clamp(20px, 2.6vw, 32px);
+    padding-inline: 28px;
+    color: var(--ink-soft);
+    display: inline-flex;
+    align-items: center;
+    gap: 28px;
+    flex-shrink: 0;
+
+    &::after {
+      content: "—";
+      font-style: normal;
+      color: var(--cobalt);
+    }
+  }
+}

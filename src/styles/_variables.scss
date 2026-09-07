@@ -1,0 +1,31 @@
+// Design Tokens & Variables
+$bg: #fbfbf8;
+$ink: #0d0d0f;
+$ink-soft: #4a4a4c;
+$cobalt: #1e3ae0;
+$cobalt-soft: rgba(30, 58, 224, 0.08);
+$line: #dedcd4;
+
+$panel-dark: #0d0d0f;
+$panel-dark-text: #f4f3ee;
+$panel-dark-soft: #8c8c90;
+
+$serif: var(--font-serif, "Bodoni Moda"), "Times New Roman", serif;
+$sans: var(--font-sans, "Archivo"), -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+$mono: var(--font-mono, "JetBrains Mono"), monospace;
+
+:root {
+  --bg: #{$bg};
+  --ink: #{$ink};
+  --ink-soft: #{$ink-soft};
+  --cobalt: #{$cobalt};
+  --cobalt-soft: #{$cobalt-soft};
+  --line: #{$line};
+  --panel-dark: #{$panel-dark};
+  --panel-dark-text: #{$panel-dark-text};
+  --panel-dark-soft: #{$panel-dark-soft};
+
+  --serif: #{$serif};
+  --sans: #{$sans};
+  --mono: #{$mono};
+}

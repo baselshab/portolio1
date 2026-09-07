@@ -1,0 +1,46 @@
+@use "variables" as *;
+
+// Responsive breakpoints
+@mixin mobile {
+  @media (max-width: 760px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: 900px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: 901px) {
+    @content;
+  }
+}
+
+// Flex shortcuts
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// Typography helpers
+@mixin font-serif {
+  font-family: $serif;
+}
+
+@mixin font-sans {
+  font-family: $sans;
+}
+
+@mixin font-mono {
+  font-family: $mono;
+}

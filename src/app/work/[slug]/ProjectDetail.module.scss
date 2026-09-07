@@ -1,0 +1,256 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as *;
+
+.detailPage {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--ink);
+  padding-top: 140px;
+  padding-bottom: 120px;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: $mono;
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin-bottom: 40px;
+  transition: color 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    color: var(--cobalt);
+    transform: translateX(-4px);
+  }
+}
+
+.header {
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 60px;
+  margin-bottom: 60px;
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: $mono;
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin-bottom: 24px;
+
+  .idx {
+    color: var(--cobalt);
+    font-weight: 500;
+  }
+}
+
+.title {
+  font-family: $serif;
+  font-size: clamp(42px, 7vw, 96px);
+  font-weight: 600;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  margin-bottom: 30px;
+}
+
+.tagline {
+  font-size: clamp(20px, 2.2vw, 28px);
+  font-family: $sans;
+  color: var(--ink-soft);
+  max-width: 48ch;
+  line-height: 1.4;
+}
+
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 50px;
+  padding-top: 40px;
+  border-top: 1px solid var(--line);
+
+  .metricCard {
+    .val {
+      font-family: $serif;
+      font-size: clamp(32px, 4vw, 54px);
+      font-weight: 500;
+      color: var(--cobalt);
+      line-height: 1;
+    }
+
+    .lbl {
+      margin-top: 10px;
+      font-family: $mono;
+      font-size: 11px;
+      color: var(--ink-soft);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+  }
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.coverWrapper {
+  margin-bottom: 60px;
+  border-radius: 16px;
+  overflow: hidden;
+  max-height: 520px;
+  background: #101012;
+  border: 1px solid var(--line);
+
+  .coverImage {
+    width: 100%;
+    height: 100%;
+    max-height: 520px;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+.contentGrid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 80px;
+
+  @include tablet {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+}
+
+.mainCol {
+  h3 {
+    font-family: $serif;
+    font-size: clamp(26px, 3vw, 36px);
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+
+  p {
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--ink-soft);
+    margin-bottom: 24px;
+  }
+}
+
+.sidebar {
+  border-inline-start: 1px solid var(--line);
+  padding-inline-start: 40px;
+
+  @include tablet {
+    border-inline-start: none;
+    border-top: 1px solid var(--line);
+    padding-inline-start: 0;
+    padding-top: 40px;
+  }
+
+  .sideBlock {
+    margin-bottom: 36px;
+
+    h5 {
+      font-family: $mono;
+      font-size: 11px;
+      color: var(--cobalt);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+
+    p {
+      font-size: 15px;
+      color: var(--ink);
+    }
+  }
+
+  .stackTags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    span {
+      display: inline-block;
+      padding: 6px 14px;
+      background: var(--cobalt-soft);
+      color: var(--cobalt);
+      font-family: $mono;
+      font-size: 12px;
+      border-radius: 999px;
+    }
+  }
+
+  .actionBtns {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 30px;
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 24px;
+      font-family: $mono;
+      font-size: 13px;
+      border-radius: 999px;
+      transition: all 0.25s ease;
+
+      &.primary {
+        background: var(--cobalt);
+        color: #fff;
+
+        &:hover {
+          background: #2c49f0;
+          transform: translateY(-2px);
+        }
+      }
+
+      &.secondary {
+        border: 1px solid var(--line);
+        color: var(--ink);
+
+        &:hover {
+          border-color: var(--ink);
+          transform: translateY(-2px);
+        }
+      }
+    }
+  }
+}
+
+.footerNav {
+  margin-top: 100px;
+  padding-top: 40px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .nextLink {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-family: $mono;
+    font-size: 12px;
+    color: var(--ink-soft);
+
+    strong {
+      font-family: $serif;
+      font-size: 28px;
+      font-weight: 500;
+      color: var(--ink);
+      margin-top: 6px;
+      transition: color 0.2s ease;
+    }
+
+    &:hover strong {
+      color: var(--cobalt);
+    }
+  }
+}
