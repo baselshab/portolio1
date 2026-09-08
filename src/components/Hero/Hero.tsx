@@ -44,7 +44,7 @@ export default function Hero() {
       <div className={styles.bgWrapper}>
         <Image
           src="/images/hero.jpeg"
-          alt="Basel Abushab"
+          alt="Basel Abushab s"
           fill
           priority
           sizes="100vw"
