@@ -1,18 +1,13 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import styles from "./Hero.module.scss";
 
 export default function Hero() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [loaded, setLoaded] = useState(false);
-
-  useEffect(() => {
-    setLoaded(true);
-  }, []);
+  const containerRef = useRef<HTMLElement>(null);
 
   useGSAP(
     () => {
@@ -21,18 +16,15 @@ export default function Hero() {
         gsap.fromTo(
           reveals,
           {
-            clipPath: "inset(0 0 100% 0)",
-            y: 12,
+            y: 18,
             opacity: 0,
           },
           {
-            clipPath: "inset(0 0 0% 0)",
             y: 0,
             opacity: 1,
-            duration: 1.1,
-            stagger: 0.18,
-            ease: "power3.out",
-            delay: 0.1,
+            duration: 1,
+            stagger: 0.14,
+            ease: "power2.out",
           }
         );
       }
@@ -40,51 +32,49 @@ export default function Hero() {
     { scope: containerRef }
   );
 
-  const handleScrollToWork = () => {
-    const target = document.getElementById("work");
+  const handleScrollTo = (id: string) => {
+    const target = document.getElementById(id);
     if (target) {
       target.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   return (
-    <section
-      className={`${styles.hero} ${loaded ? styles.loaded : ""}`}
-      id="hero"
-      ref={containerRef}
-    >
-      <div className={styles.text}>
-        <div className={styles.eyebrow}>
-          <span className={styles.statusDotWrapper}>
-            <span className={styles.statusDot} />
-            <span className={styles.statusPulse} />
-          </span>
-          <span className={styles.line} />
+    <section className={styles.hero} id="hero" ref={containerRef}>
+      <div className={styles.bgWrapper}>
+        <Image
+          src="/images/hero.jpeg"
+          alt="Basel Abushab"
+          fill
+          priority
+          sizes="100vw"
+          className={styles.bgImage}
+        />
+      </div>
+
+      <div className={styles.content}>
+        <p className={`${styles.eyebrow} fx`}>
           Full-Stack Software Engineer
-        </div>
-        <h1 className={styles.name}>
-          <span className={styles.lineWrap}>
-            <span className="fx">Basel</span>
-          </span>
-          <span className={styles.lineWrap}>
-            <span className="fx">
-              <em>Abushab</em>
-            </span>
-          </span>
-        </h1>
-        <p className={styles.tagline}>
-          <span className="fx">
-            <strong>I don&apos;t chase clever.</strong> I chase code that still
-            makes sense a year from now — from the first idea to production, at
-            scale.
-          </span>
         </p>
-        <div className={styles.heroActions}>
+
+        <h1 className={`${styles.headline} fx`}>
+          I care about what happens  <em>after “it works.”</em>
+        </h1>
+
+        <h2 className={`${styles.name} fx`}>
+          Basel Abushab
+        </h2>
+
+        <p className={`${styles.supporting} fx`}>
+          Building web applications powered by AI.
+        </p>
+
+        <div className={`${styles.heroActions} fx`}>
           <a
             href="#work"
             onClick={(e) => {
               e.preventDefault();
-              handleScrollToWork();
+              handleScrollTo("work");
             }}
             className={styles.primaryCta}
           >
@@ -94,29 +84,13 @@ export default function Hero() {
             href="#contact"
             onClick={(e) => {
               e.preventDefault();
-              const target = document.getElementById("contact");
-              if (target) target.scrollIntoView({ behavior: "smooth" });
+              handleScrollTo("contact");
             }}
             className={styles.secondaryCta}
           >
             Get in touch
           </a>
         </div>
-
-        <div className={styles.scroll} onClick={handleScrollToWork}>
-          <div className={styles.bar} />
-          Scroll
-        </div>
-      </div>
-      <div className={styles.visual}>
-        <Image
-          src="/images/hero.jpg"
-          alt="Basel Abushab at work"
-          width={800}
-          height={1000}
-          priority
-          sizes="(max-width: 900px) 100vw, 50vw"
-        />
       </div>
     </section>
   );
